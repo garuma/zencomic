@@ -54,11 +54,10 @@
     <Compile Include="gtk-gui\Zencomic.PreferencesDialog.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="Screensaver.cs" />
+    <Compile Include="ComicService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.desktop">
-      <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
-    </Content>
+    <Content Include="app.desktop" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

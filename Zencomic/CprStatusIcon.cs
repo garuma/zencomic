@@ -25,16 +25,10 @@
 // THE SOFTWARE.
 
 using System;
-using System.Linq;
-using System.Threading;
-
 using Mono.Unix;
-using Mono.Addins;
 
 using Gtk;
 using Gdk;
-
-using ZencomicLib;
 
 namespace Zencomic
 {
@@ -44,8 +38,7 @@ namespace Zencomic
 		Menu menu;
 		
 		Func<PreferencesDialog> dialogCreator;
-		IComicAddin[] comics;
-		Random rand = new Random ();
+
 		PreferencesDialog dialog;
 		
 		INotificationService notifications = new RealWindowNotifications ();
@@ -57,11 +50,10 @@ namespace Zencomic
 		public CprStatusIcon (Func<PreferencesDialog> dialogCreator) : base (Pixbuf.LoadFromResource ("data.dilbert.png"))
 		{
 			this.dialogCreator = dialogCreator;
-			InitComics ();
 			this.PopupMenu += PopupMenuHandler;
 			SetupMenu ();
 			AddTimeout (delay);
-			AddinManager.ExtensionChanged += delegate { InitComics (); };
+			
 			if (screensaver != null) {
 				screensaver.ActiveChanged += delegate (bool active) {
 					RemoveTimeout ();
@@ -69,18 +61,6 @@ namespace Zencomic
 						AddTimeout (delay);
 				};
 			}
-		}
-		
-		void InitComics ()
-		{
-			this.comics = AddinManager.GetExtensionObjects ("/Zencomic/ComicAddins").Cast<IComicAddin> ().ToArray ();
-			
-			Console.Write ("Enabled addin : ");
-			foreach (var comic in comics) {
-				Console.Write (comic.ComicName);
-				Console.Write (';');
-			}
-			Console.WriteLine ();
 		}
 		
 		void SetupMenu ()
@@ -214,20 +194,7 @@ namespace Zencomic
 			if (screensaver != null && screensaver.GetActive ())
 				return false;
 				
-			IComicAddin addin = comics [rand.Next (0, comics.Length)];
-			
-			ThreadPool.QueueUserWorkItem (delegate {
-				Pixbuf pixbuf = null;
-				try {
-					for (int i = 0; i < 5 && pixbuf == null; i++)
-						pixbuf = addin.GetNextComic ();
-				} catch {
-					return;
-				}
-				
-				notifications.Notification (pixbuf, addin.ComicName, addin.ComicAuthor);
-			});
-			
+			ComicService.GetNextComic (notifications.Notification);
 							
 			return true;
 		}
