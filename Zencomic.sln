@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zencomic", "Zencomic\Zencomic.csproj", "{E0452CD1-C27F-4AE4-B1E0-25867A62C8C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZencomicLib", "ZencomicLib\ZencomicLib.csproj", "{D3B1525E-A864-47BC-9917-186BFAB0FE16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DilbertComicAddin", "DilbertComicAddin\DilbertComicAddin.csproj", "{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XkcdComicAddin", "XkcdComicAddin\XkcdComicAddin.csproj", "{EA5EB161-4A46-49FB-9647-359044DF2CDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeekscottesComicAddin", "GeekscottesComicAddin\GeekscottesComicAddin.csproj", "{03641F37-E9E5-4C6C-9A09-8F6DDE8B7264}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LolcatComicAddin", "LolcatComicAddin\LolcatComicAddin.csproj", "{8B50A25A-E81C-491E-B94A-CE319FEBC13F}"
+EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages\Packages.mdproj", "{17365CE1-8566-4611-9E56-5F2A9DA885B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03641F37-E9E5-4C6C-9A09-8F6DDE8B7264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03641F37-E9E5-4C6C-9A09-8F6DDE8B7264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03641F37-E9E5-4C6C-9A09-8F6DDE8B7264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03641F37-E9E5-4C6C-9A09-8F6DDE8B7264}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17365CE1-8566-4611-9E56-5F2A9DA885B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17365CE1-8566-4611-9E56-5F2A9DA885B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17365CE1-8566-4611-9E56-5F2A9DA885B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17365CE1-8566-4611-9E56-5F2A9DA885B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B50A25A-E81C-491E-B94A-CE319FEBC13F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B50A25A-E81C-491E-B94A-CE319FEBC13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B50A25A-E81C-491E-B94A-CE319FEBC13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B50A25A-E81C-491E-B94A-CE319FEBC13F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B1525E-A864-47BC-9917-186BFAB0FE16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B1525E-A864-47BC-9917-186BFAB0FE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B1525E-A864-47BC-9917-186BFAB0FE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B1525E-A864-47BC-9917-186BFAB0FE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0452CD1-C27F-4AE4-B1E0-25867A62C8C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0452CD1-C27F-4AE4-B1E0-25867A62C8C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0452CD1-C27F-4AE4-B1E0-25867A62C8C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0452CD1-C27F-4AE4-B1E0-25867A62C8C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA5EB161-4A46-49FB-9647-359044DF2CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA5EB161-4A46-49FB-9647-359044DF2CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA5EB161-4A46-49FB-9647-359044DF2CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA5EB161-4A46-49FB-9647-359044DF2CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 0.1
+		StartupItem = Zencomic\Zencomic.csproj
+		deployversion = 0.2
+	EndGlobalSection
+EndGlobal

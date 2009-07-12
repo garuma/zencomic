@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{17365CE1-8566-4611-9E56-5F2A9DA885B2}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="Tarball">
+          <Builder TargetDirectory="/home/jeremie/Projects/ComicPainReliever" DefaultConfiguration="Debug" ctype="TarballDeployTarget">
+            <ChildEntries>
+              <SolutionItemReference path="..\Zencomic\Zencomic.csproj" />
+              <SolutionItemReference path="..\ZencomicLib\ZencomicLib.csproj" />
+              <SolutionItemReference path="..\DilbertComicAddin\DilbertComicAddin.csproj" />
+              <SolutionItemReference path="..\XkcdComicAddin\XkcdComicAddin.csproj" />
+              <SolutionItemReference path="..\GeekscottesComicAddin\GeekscottesComicAddin.csproj" />
+              <SolutionItemReference path="..\LolcatComicAddin\LolcatComicAddin.csproj" />
+            </ChildEntries>
+            <ExcludedFiles>
+              <File>XkcdComicAddin,Linux.PkgConfig,xkcdcomicaddin.pc</File>
+              <File>GeekscottesComicAddin,Linux.PkgConfig,geekscottescomicaddin.pc</File>
+              <File>DilbertComicAddin,Linux.PkgConfig,dilbertcomicaddin.pc</File>
+              <File>LolcatComicAddin,Linux.PkgConfig,lolcatcomicaddin.pc</File>
+            </ExcludedFiles>
+            <RootEntry path="..\Zencomic.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

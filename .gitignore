@@ -1,0 +1,7 @@
+*.exe
+*.dll
+*.mdb
+*.userprefs
+*.usertasks
+*.old
+*.tar.gz
