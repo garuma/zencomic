@@ -31,7 +31,7 @@ using Mono.Addins;
 namespace ZencomicLib
 {
 	
-	[TypeExtensionPoint ("/Zencomic/ComicAddins")]
+	[TypeExtensionPoint ("/Zencomic/ComicAddins", Name = "Comics", Description = "Extension point for the comic addins")]
 	public interface IComicAddin
 	{
 		Pixbuf GetNextComic ();

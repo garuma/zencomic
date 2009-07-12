@@ -40,7 +40,7 @@ using Mono.Addins;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-[assembly: Addin ("XkcdAddin", "1.0")]
+[assembly: Addin ("XKCD", "1.0", Category = "XKCD comic")]
 [assembly: AddinDependency("ComicAddinLib", "1.0")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

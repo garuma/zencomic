@@ -52,6 +52,7 @@ namespace Zencomic
 		static void InitComics ()
 		{
 			comics = AddinManager.GetExtensionObjects ("/Zencomic/ComicAddins").Cast<IComicAddin> ().ToArray ();
+			
 			FillShuffleBuffer ();
 			
 			Console.Write ("Enabled addin : ");

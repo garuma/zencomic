@@ -39,6 +39,7 @@ namespace Zencomic
 	public partial class PreferencesDialog : Gtk.Dialog
 	{
 		Config config;
+		ListStore store = new ListStore (typeof (string), typeof (bool), typeof (Addin));
 
 		public PreferencesDialog (Config config)
 		{
@@ -47,6 +48,7 @@ namespace Zencomic
 			this.Build();
 			
 			InitFromConfig ();
+			BuildComicList ();
 			
 			this.ShowAll ();
 		}
@@ -57,6 +59,22 @@ namespace Zencomic
 			popupDelayButton.Value = config.PopupTime;
 			radiobutton2.Active = config.Method == Config.PopupMethod.Notification;
 			radiobutton3.Active = config.Method == Config.PopupMethod.Window;
+		}
+		
+		void BuildComicList ()
+		{
+			comicTv.Model = store;
+			
+			comicTv.AppendColumn ("Name", new CellRendererText (), "text", 0);
+			
+			CellRendererToggle cellToggle = new CellRendererToggle ();
+			cellToggle.Activatable = true;
+			cellToggle.Toggled += OnCellRendererToggled;
+			comicTv.AppendColumn ("Enabled", cellToggle, "active", 1);
+			
+			foreach (Addin addin in AddinManager.Registry.GetAddins ()) {
+				store.AppendValues (addin.LocalId, addin.Enabled, addin);
+			}
 		}
 
 		protected virtual void OnShowDelayButtonValueChanged (object sender, System.EventArgs e)
@@ -90,6 +108,21 @@ namespace Zencomic
 		protected virtual void OnRadiobutton3Toggled (object sender, System.EventArgs e)
 		{
 			config.Method = Config.PopupMethod.Window;
+		}
+		
+		protected virtual void OnCellRendererToggled (object sender, ToggledArgs e)
+		{
+			TreeIter iter;
+			
+			if (store.GetIter (out iter, new TreePath(e.Path))) {
+				Addin addin = store.GetValue (iter, 2) as Addin;
+				bool old = (bool)store.GetValue (iter, 1);
+				
+				if (addin != null) {
+					addin.Enabled = !old;
+					store.SetValue (iter, 1, !old);
+				}
+			}
 		}
 	}
 }
