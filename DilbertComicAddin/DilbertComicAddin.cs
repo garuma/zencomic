@@ -75,13 +75,12 @@ namespace DilbertComicAddin
 		}
 		
 		#region IComicAddin implementation
-		public Gdk.Pixbuf GetNextComic ()
+		public Gdk.Pixbuf GetNextComic (out string url)
 		{
 			string page = GetHtmlPage (GetRandomDateTime ());
-			string url = GetUrlForPage (page);
-			Console.WriteLine ("Dilbert comic url : " + baseUrl + url);
+			url = baseUrl + GetUrlForPage (page);
 			
-			Stream image = client.OpenRead (baseUrl + url);
+			Stream image = client.OpenRead (url);
 			
 			return new Gdk.Pixbuf (image);
 		}

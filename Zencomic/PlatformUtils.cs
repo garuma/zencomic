@@ -1,5 +1,5 @@
 // 
-// IComicAddin.cs
+// PlateformUtils.cs
 //  
 // Author:
 //       Jérémie "Garuma" Laval <jeremie.laval@gmail.com>
@@ -25,18 +25,17 @@
 // THE SOFTWARE.
 
 using System;
-using Gdk;
-using Mono.Addins;
+using System.Diagnostics;
 
-namespace ZencomicLib
+namespace Zencomic
 {
-	
-	[TypeExtensionPoint ("/Zencomic/ComicAddins", Name = "Comics", Description = "Extension point for the comic addins")]
-	public interface IComicAddin
+	public static class PlatformUtils
 	{
-		Pixbuf GetNextComic (out string url);
-		string ComicName { get; }
-		string ComicAuthor { get; }
-		bool ShouldCachePictures { get; set; }
+		const string xdg = "xdg-open";
+		
+		public static void LaunchBrowser (string url)
+		{
+			Process.Start (xdg, '"' + url + '"');
+		}
 	}
 }

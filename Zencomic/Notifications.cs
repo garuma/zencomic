@@ -46,7 +46,7 @@ namespace Zencomic
 	
 	public interface INotificationService
 	{
-		void Notification (Pixbuf image, string name, string author);
+		void Notification (Pixbuf image, string stripUrl, string name, string author);
 		int PopupDelay { set; }
 	}
 	
@@ -58,6 +58,8 @@ namespace Zencomic
 			
 			Gtk.Image image;
 			Label label;
+			LinkLabel urlLabel;
+			
 			VBox vbox;
 			Gtk.Window win = new Gtk.Window (Gtk.WindowType.Popup);
 			
@@ -76,28 +78,32 @@ namespace Zencomic
 	            win.Decorated = false;
 	            win.BorderWidth = 6;
 				
-	            
 	            win.SetPosition(WindowPosition.CenterAlways);
 
 				image = new Gtk.Image ();
 				label = new Label ();
 	            label.CanFocus = false;
-	            label.Wrap = true;           
+	            label.Wrap = true;
+				urlLabel = new LinkLabel ();
+				urlLabel.Clicked += HandleClick;
 				
 				win.Add(box);
 	            
 	            win.ModifyBg (StateType.Normal, bg);
 				label.ModifyFg (StateType.Normal, fg);
 				box.ModifyBg (StateType.Normal, bg);
+				urlLabel.ModifyBg (StateType.Selected, bg);
+				urlLabel.ModifyBg (StateType.Normal, bg);
 				
-	            vbox.PackStart(image, true, true, 0);
-	            vbox.PackStart(label, false, false, 0);
+	            vbox.PackStart (image, true, true, 0);
+	            vbox.PackStart (label, false, false, 0);
+				vbox.PackStart (urlLabel, false, false, 0);
 	            
 	            vbox.Spacing = 6;
 				box.ShowAll ();
 			}
 			
-			public void Notification (Pixbuf pixbuf, string name, string author)
+			public void Notification (Pixbuf pixbuf, string stripUrl, string name, string author)
 			{
 				var screen = win.Screen;
 				
@@ -122,6 +128,8 @@ namespace Zencomic
 				label.Markup = string.Format ("<b>{0}</b> of {1}",
 				                              GLib.Markup.EscapeText(name),
 				                              GLib.Markup.EscapeText (author));
+				urlLabel.UriString = stripUrl;
+				urlLabel.Text = "View strip in context";
 				
 				image.SetSizeRequest(image.Pixbuf.Width, image.Pixbuf.Height);
 				label.SetSizeRequest(-1, -1);
@@ -154,6 +162,14 @@ namespace Zencomic
 				HideAllCallback ();
 			}
 			
+			void HandleClick (object sender, EventArgs e)
+			{
+				if (string.IsNullOrEmpty (urlLabel.UriString))
+					return;
+				
+				PlatformUtils.LaunchBrowser (urlLabel.UriString);
+			}
+			
 			bool HideAllCallback ()
 			{
 				if (!win.Visible)
@@ -173,13 +189,13 @@ namespace Zencomic
 		int popupDelay = 20;
 		
 		#region INotificationService implementation
-		public void Notification (Pixbuf image, string name, string author)
+		public void Notification (Pixbuf image, string stripUrl, string name, string author)
 		{
 			Application.Invoke (delegate {
 				PopupWindow window = new PopupWindow ();
 				window.PopupDelay = popupDelay;
 				
-				window.Notification (image, name, author);
+				window.Notification (image, stripUrl, name, author);
 			});
 		}
 		
@@ -218,7 +234,7 @@ namespace Zencomic
 			proxy =  Bus.Session.GetObject<INotifications> (busName, new ObjectPath (objectPath));
 		}
 		
-		public void Notification (Pixbuf image, string name, string author)
+		public void Notification (Pixbuf image, string stripUrl, string name, string author)
 		{
 			const int maxWidth = 387;
 			Pixbuf pixbuf = image.ScaleSimple (maxWidth, image.Height * maxWidth / image.Width, InterpType.Hyper);

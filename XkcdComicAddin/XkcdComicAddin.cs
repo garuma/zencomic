@@ -45,16 +45,17 @@ namespace XkcdComicAddin
 		WebClient client = new WebClient ();
 
 		#region IComicAddin implementation
-		public Pixbuf GetNextComic ()
+		public Pixbuf GetNextComic (out string url)
 		{
+			url = string.Empty;
 			string page = client.DownloadString (randomUrl);
 
 			Match m = r.Match (page);
 			if (m == null || m.Captures.Count == 0)
 				return null;
 			
-			string url = m.Captures [0].Value;
-			Console.WriteLine ("Xkcd comic url : " + url);
+			url = m.Captures [0].Value;
+			
 			return new Gdk.Pixbuf (client.OpenRead (url));
 		}
 		

@@ -89,8 +89,9 @@ namespace GeekscottesComicAddin
 			return String.Format(pageUrlFromId,randObj.Next(first,last));
 		}
 		#region IComicAddin implementation
-		public Pixbuf GetNextComic ()
+		public Pixbuf GetNextComic (out string url)
 		{
+			url = string.Empty;
 			string pageurl =  GetPageUrl();
 			
 			string page = client.DownloadString (pageurl);
@@ -101,8 +102,8 @@ namespace GeekscottesComicAddin
 				Console.WriteLine("nothing matching url!");
 				return null;
 			}
-			string url = "http://www.nojhan.net/geekscottes/" + imageMatch.Captures [0].Value;
-			Console.WriteLine ("Geekscottes comic url : " + url);
+			url = "http://www.nojhan.net/geekscottes/" + imageMatch.Captures [0].Value;
+			
 			return new Gdk.Pixbuf (client.OpenRead (url));
 		}
 		

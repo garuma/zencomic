@@ -47,7 +47,8 @@ namespace Zencomic
 		uint lastId;
 		int delay = 5;
 		
-		public CprStatusIcon (Func<PreferencesDialog> dialogCreator) : base (Pixbuf.LoadFromResource ("data.dilbert.png"))
+		public CprStatusIcon (Func<PreferencesDialog> dialogCreator) 
+			: base (Pixbuf.LoadFromResource ("Zencomic.data.dilbert.png"))
 		{
 			this.dialogCreator = dialogCreator;
 			this.PopupMenu += PopupMenuHandler;

@@ -73,7 +73,7 @@ namespace Zencomic
 		}
 		
 		// The parameter are : comic image, comic name, comic author
-		public static void GetNextComic (Action <Pixbuf, string, string> callback)
+		public static void GetNextComic (Action <Pixbuf, string, string, string> callback)
 		{
 			// No comic addin loaded
 			if (comics.Length == 0)
@@ -90,14 +90,16 @@ namespace Zencomic
 			
 			ThreadPool.QueueUserWorkItem (delegate {
 				Pixbuf pixbuf = null;
+				string stripUrl = string.Empty;
+				
 				try {
 					for (int i = 0; i < 5 && pixbuf == null; i++)
-						pixbuf = addin.GetNextComic ();
+						pixbuf = addin.GetNextComic (out stripUrl);
 				} catch {
 					return;
 				}
 				
-				callback (pixbuf, addin.ComicName, addin.ComicAuthor);
+				callback (pixbuf, stripUrl, addin.ComicName, addin.ComicAuthor);
 			});
 		}		
 	}
