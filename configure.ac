@@ -44,8 +44,8 @@ if test -z "$CONFIG_REQUESTED" ; then
 	enable_debug=yes
 fi
 AC_ARG_ENABLE(enable-glib-timeout-second,
-	AC_HELP_STRING([--enable-enable-glib-timeout-second],
-		[Help improve laptop battery life. Need a recent gtk-sharp.]),
+	AC_HELP_STRING([--enable-timeout-second],
+		[Helps improve laptop battery life but requires a recent gtk-sharp]),
 		enable_enable_glib_timeout_second=yes, enable_enable_glib_timeout_second=no)
 AM_CONDITIONAL(ENABLE_ENABLE_GLIB_TIMEOUT_SECOND, test x$enable_enable_glib_timeout_second = xyes)
 
