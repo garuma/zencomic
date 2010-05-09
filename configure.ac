@@ -67,6 +67,7 @@ ZencomicLib/Makefile
 DilbertComicAddin/Makefile
 XkcdComicAddin/Makefile
 GarfieldComicAddin/Makefile
+GarfieldMinusGarfieldComicAddin/Makefile
 GeekscottesComicAddin/Makefile
 LolcatComicAddin/Makefile
 TrollcatComicAddin/Makefile

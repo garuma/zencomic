@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrollcatComicAddin", "Troll
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarfieldComicAddin", "GarfieldComicAddin\GarfieldComicAddin.csproj", "{78E4B50E-501A-4B60-ABEA-0BA110967FFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GarfieldMinusGarfieldComicAddin", "GarfieldMinusGarfieldComicAddin\GarfieldMinusGarfieldComicAddin.csproj", "{78E4B50F-601A-5B60-BBEA-1BA140967FFB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{78E4B50E-501A-4B60-ABEA-0BA110967FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78E4B50E-501A-4B60-ABEA-0BA110967FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78E4B50E-501A-4B60-ABEA-0BA110967FFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78E4B50F-601A-5B60-BBEA-1BA140967FFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78E4B50F-601A-5B60-BBEA-1BA140967FFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78E4B50F-601A-5B60-BBEA-1BA140967FFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78E4B50F-601A-5B60-BBEA-1BA140967FFB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7AFF5770-D15D-42F6-B904-A17AC0C4DA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
