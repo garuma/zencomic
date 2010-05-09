@@ -70,7 +70,7 @@ namespace GarfieldMinusGarfieldComicAddin
 		
 		public string ComicAuthor {
 			get {
-				return "Jim Davis";
+				return "Jim Davis/Dan Walsh";
 			}
 		}
 		
