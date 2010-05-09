@@ -1,5 +1,5 @@
 // 
-// MyClass.cs
+// LolcatComicAddin.cs
 //  
 // Author:
 //       Jérémie "Garuma" Laval <jeremie.laval@gmail.com>
