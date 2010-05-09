@@ -68,6 +68,7 @@ DilbertComicAddin/Makefile
 XkcdComicAddin/Makefile
 GeekscottesComicAddin/Makefile
 LolcatComicAddin/Makefile
+TrollcatComicAddin/Makefile
 Zencomic/zencomic
 Zencomic/Makefile
 Makefile
