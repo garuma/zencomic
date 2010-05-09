@@ -55,12 +55,13 @@ namespace Zencomic
 			
 			FillShuffleBuffer ();
 			
-			Console.Write ("Enabled addin : ");
-			foreach (var comic in comics) {
-				Console.Write (comic.ComicName);
-				Console.Write (';');
-			}
-			Console.WriteLine ();
+			DumpComicList ();
+		}
+		
+		static void DumpComicList ()
+		{
+			string log = "Enabled addins: " + comics.Select ((c) => c.ComicName).Aggregate ((c1, c2) => c1 + "; " + c2);
+			GLib.Log.DefaultHandler ("zencomic", GLib.LogLevelFlags.Debug, log);
 		}
 		
 		static void FillShuffleBuffer ()

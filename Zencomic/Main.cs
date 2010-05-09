@@ -38,7 +38,7 @@ namespace Zencomic
 	{
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("Starting up");
+			GLib.Log.DefaultHandler ("zencomic", GLib.LogLevelFlags.Info, "Starting up");
 			
 			Application.Init ();
 			BusG.Init ();
@@ -68,7 +68,7 @@ namespace Zencomic
 			
 			Application.Run ();
 			
-			Console.WriteLine ("Saving configuration and exiting");
+			GLib.Log.DefaultHandler ("zencomic", GLib.LogLevelFlags.Info, "Saving configuration and exiting");
 			config.Save ();
 		}
 		
