@@ -82,7 +82,7 @@ DATA_FILES =
 
 RESOURCES = \
 	gtk-gui/gui.stetic \
-	data/dilbert.png,Zencomic.data.dilbert.png 
+	data/zencomic.png,Zencomic.data.zencomic.png 
 
 EXTRAS = \
 	app.desktop \

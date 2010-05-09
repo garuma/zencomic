@@ -9,7 +9,7 @@
   </import>
   <widget class="Gtk.Dialog" id="Zencomic.PreferencesDialog" design-size="523 382">
     <property name="MemberName" />
-    <property name="Title" translatable="yes">Zencomic preferences</property>
+    <property name="Title" translatable="yes">Zencomic</property>
     <property name="WindowPosition">CenterOnParent</property>
     <property name="DefaultWidth">0</property>
     <property name="DefaultHeight">0</property>

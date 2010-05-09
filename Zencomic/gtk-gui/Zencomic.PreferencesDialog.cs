@@ -75,7 +75,7 @@ namespace Zencomic
 			global::Stetic.Gui.Initialize (this);
 			// Widget Zencomic.PreferencesDialog
 			this.Name = "Zencomic.PreferencesDialog";
-			this.Title = global::Mono.Unix.Catalog.GetString ("Zencomic preferences");
+			this.Title = global::Mono.Unix.Catalog.GetString ("Zencomic");
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			this.DefaultWidth = 0;
 			this.DefaultHeight = 0;
