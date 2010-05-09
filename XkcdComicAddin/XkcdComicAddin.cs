@@ -42,21 +42,11 @@ namespace XkcdComicAddin
 	{
 		Regex r = new Regex ("http://imgs.xkcd.com/comics/(.+)\\.(png|jpg|gif)", RegexOptions.Compiled);
 		const string randomUrl = "http://dynamic.xkcd.com/comic/random/";
-		WebClient client = new WebClient ();
 
 		#region IComicAddin implementation
 		public Pixbuf GetNextComic (out string url)
 		{
-			url = string.Empty;
-			string page = client.DownloadString (randomUrl);
-
-			Match m = r.Match (page);
-			if (m == null || m.Captures.Count == 0)
-				return null;
-			
-			url = m.Captures [0].Value;
-			
-			return new Gdk.Pixbuf (client.OpenRead (url));
+			return ComicAddinHelper.RegexBasedRetrieval (r, randomUrl, out url);
 		}
 		
 		public string ComicName {

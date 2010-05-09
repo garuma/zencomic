@@ -70,7 +70,7 @@ namespace DilbertComicAddin
 		string GetUrlForPage (string page)
 		{	
 			Match m = r.Match (page);
-						
+			
 			return m.Captures[0].Value;
 		}
 		

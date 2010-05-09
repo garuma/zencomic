@@ -1,10 +1,10 @@
 // 
-// MyClass.cs
+// IComicAddin.cs
 //  
 // Author:
 //       Jérémie "Garuma" Laval <jeremie.laval@gmail.com>
 // 
-// Copyright (c) 2009 Jérémie "Garuma" Laval
+// Copyright (c) 2010 Jérémie "Garuma" Laval
 // 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,41 +29,27 @@ using System.Net;
 using System.Text.RegularExpressions;
 
 using Gdk;
-using Mono.Addins;
 
-using ZencomicLib;
-
-namespace LolcatComicAddin
+namespace ZencomicLib
 {
-	
-	[Extension ("/Zencomic/ComicAddins")]
-	public class LolcatComicAddin : IComicAddin
+	public static class ComicAddinHelper
 	{
-		Regex r = new Regex ("http://icanhascheezburger.files.wordpress.com/(\\d+)/(\\d+)/(\\w|-|_)+\\.(png|jpg|gif)", RegexOptions.Compiled);
-		const string randomUrl = "http://icanhascheezburger.com/?random";
-
-		#region IComicAddin implementation
-		public Pixbuf GetNextComic (out string url)
+		static WebClient client = new WebClient ();
+		
+		public static Pixbuf RegexBasedRetrieval (Regex r, string randomUrl, out string url)
 		{
-			return ComicAddinHelper.RegexBasedRetrieval (r, randomUrl, out url);
+			url = string.Empty;
+			
+			string page = client.DownloadString (randomUrl);
+
+			Match m = r.Match (page);
+			if (m == null || m.Captures.Count == 0)
+				return null;
+			
+			url = m.Captures [0].Value;
+
+			return new Gdk.Pixbuf (client.OpenRead (url));
 		}
-		
-		public string ComicName {
-			get {
-				return "Lolcats";
-			}
-		}
-		
-		public string ComicAuthor {
-			get {
-				return "Various";
-			}
-		}
-		
-		public bool ShouldCachePictures {
-			get;
-			set;
-		}
-		#endregion
 	}
 }
+
