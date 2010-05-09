@@ -34,7 +34,6 @@ using NDesk.DBus;
 
 namespace Zencomic
 {
-
 	[Interface("org.gnome.ScreenSaver")]
 	public interface IScreenSaver 
 	{

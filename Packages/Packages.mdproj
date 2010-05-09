@@ -8,7 +8,7 @@
     <Packages>
       <Packages>
         <Package name="Tarball">
-          <Builder TargetDirectory="/home/jeremie/Projects/ComicPainReliever" DefaultConfiguration="Debug" ctype="TarballDeployTarget">
+          <Builder TargetDirectory=".." DefaultConfiguration="Debug" ctype="TarballDeployTarget">
             <ChildEntries>
               <SolutionItemReference path="..\Zencomic\Zencomic.csproj" />
               <SolutionItemReference path="..\ZencomicLib\ZencomicLib.csproj" />
