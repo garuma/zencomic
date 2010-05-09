@@ -109,11 +109,6 @@ namespace Zencomic
 
 		void PreferencesActivated (object sender, EventArgs e)
 		{
-			if (dialog != null) {
-				dialog.Present ();
-				return;
-			}
-			
 			dialog = dialogCreator ();
 			
 			dialog.ShowAll ();
@@ -122,6 +117,7 @@ namespace Zencomic
 			dialog.SetPosition (Gtk.WindowPosition.Center);
 			dialog.GrabFocus ();
 			
+			dialog.Present ();
 			dialog.Run ();
 			dialog.Destroy ();
 			

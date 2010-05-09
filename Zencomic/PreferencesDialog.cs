@@ -42,15 +42,15 @@ namespace Zencomic
 		ListStore store = new ListStore (typeof (string), typeof (bool), typeof (Addin));
 
 		public PreferencesDialog (Config config)
+			: base ("Zencomic preferences", null, DialogFlags.Modal)
 		{
 			this.config = config;
 			
 			this.Build();
+			this.panelIcon.SetFromStock (Stock.Preferences, IconSize.Dialog);
 			
 			InitFromConfig ();
 			BuildComicList ();
-			
-			this.ShowAll ();
 		}
 		
 		void InitFromConfig ()
