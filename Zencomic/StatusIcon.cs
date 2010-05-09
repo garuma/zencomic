@@ -62,6 +62,9 @@ namespace Zencomic
 						AddTimeout (delay);
 				};
 			}
+			
+			// If the user left clicks on the status icon, pop up a comic
+			Activate += (o, e) => IdleHandlerMethod ();
 		}
 		
 		void SetupMenu ()
