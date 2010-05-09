@@ -24,6 +24,9 @@
               <File>LolcatComicAddin,Linux.PkgConfig,lolcatcomicaddin.pc</File>
             </ExcludedFiles>
             <RootEntry path="..\Zencomic.sln" id=":root:" />
+            <UserSwitchs>
+              <Switch switchName="enable-glib-timeout-second" define="USE_GLIB_TIMEOUT_SECONDS" helpStr="NEW" />
+            </UserSwitchs>
           </Builder>
         </Package>
       </Packages>
