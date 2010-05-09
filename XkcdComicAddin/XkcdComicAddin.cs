@@ -40,7 +40,7 @@ namespace XkcdComicAddin
 	[Extension ("/Zencomic/ComicAddins")]
 	public class XkcdComicAddin : IComicAddin
 	{
-		Regex r = new Regex ("http://imgs.xkcd.com/comics/(.+)\\.(png|jpg|gif)", RegexOptions.Compiled);
+		Regex r = new Regex ("http://imgs.xkcd.com/comics/(.+)\\.\\w+", RegexOptions.Compiled);
 		const string randomUrl = "http://dynamic.xkcd.com/comic/random/";
 
 		#region IComicAddin implementation

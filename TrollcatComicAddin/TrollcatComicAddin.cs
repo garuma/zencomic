@@ -40,7 +40,7 @@ namespace TrollcatComicAddin
 	public class TrollcatComicAddin : IComicAddin
 	{
 		Regex random = new Regex ("http://trollcats.com/(\\d+)/(\\d+)/(\\w|-|_)+/", RegexOptions.Compiled);
-		Regex r = new Regex ("http://trollcats.com/wp-content/uploads/(\\d+)/(\\d+)/(\\w|-|_)+\\.(png|jpg|gif)", RegexOptions.Compiled);
+		Regex r = new Regex ("http://trollcats.com/wp-content/uploads/(\\d+)/(\\d+)/(\\w|-|_)+\\.\\w+", RegexOptions.Compiled);
 		const string randomUrl = "http://trollcats.com";
 		
 		WebClient client = new WebClient ();

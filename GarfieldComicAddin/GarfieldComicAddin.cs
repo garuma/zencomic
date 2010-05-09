@@ -60,7 +60,6 @@ namespace GarfieldComicAddin
 		{
 			DateTime d = GetRandomDateTime ();
 			url = string.Format (baseUrl, d.Year, d.ToString ("yyMMdd"));
-			Console.WriteLine ("Using " + url);
 			
 			Stream image = client.OpenRead (url);
 			return new Gdk.Pixbuf (image);

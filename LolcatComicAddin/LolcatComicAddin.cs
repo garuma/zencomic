@@ -39,7 +39,7 @@ namespace LolcatComicAddin
 	[Extension ("/Zencomic/ComicAddins")]
 	public class LolcatComicAddin : IComicAddin
 	{
-		Regex r = new Regex ("http://icanhascheezburger.files.wordpress.com/(\\d+)/(\\d+)/(\\w|-|_)+\\.(png|jpg|gif)", RegexOptions.Compiled);
+		Regex r = new Regex ("http://icanhascheezburger.files.wordpress.com/(\\d+)/(\\d+)/(\\w|-|_)+\\.\\w+", RegexOptions.Compiled);
 		const string randomUrl = "http://icanhascheezburger.com/?random";
 
 		#region IComicAddin implementation

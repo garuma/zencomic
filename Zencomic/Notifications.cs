@@ -129,7 +129,7 @@ namespace Zencomic
 				                              GLib.Markup.EscapeText(name),
 				                              GLib.Markup.EscapeText (author));
 				urlLabel.UriString = stripUrl;
-				urlLabel.Text = "View strip in context";
+				urlLabel.Text = "View original strip";
 				
 				image.SetSizeRequest(image.Pixbuf.Width, image.Pixbuf.Height);
 				label.SetSizeRequest(-1, -1);
