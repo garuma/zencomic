@@ -27,6 +27,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Text.RegularExpressions;
 
 using Gdk;
 using Mono.Addins;
@@ -38,15 +39,19 @@ namespace GarfieldMinusGarfieldComicAddin
 	[Extension ("/Zencomic/ComicAddins")]
 	public class GarfieldMinusGarfieldComicAddin : IComicAddin
 	{
-		const string baseUrl = "http://garfieldminusgarfield.net/page/{0}";
+		const string baseUrl = "http://garfieldminusgarfield.net/";
+		const string imageUrl = baseUrl + "page/{0}";
 		
 		Random rand = new Random ();
 		WebClient client = new WebClient ();
+		int? LastValidPage {
+			get; set;
+		}
 		
 		#region IComicAddin implementation
 		public Gdk.Pixbuf GetNextComic (out string url)
 		{
-			url = string.Format (baseUrl, rand.Next (0, 101));
+			url = string.Format (imageUrl, rand.Next (0, GetLastValidPage ()));
 			
 			string page = client.DownloadString (url);
 			List <string> potentials = new List<string> ();
@@ -61,7 +66,28 @@ namespace GarfieldMinusGarfieldComicAddin
 			url = potentials [rand.Next (0, potentials.Count)];
 			return new Gdk.Pixbuf (client.OpenRead (url));
 		}
-		
+
+		int GetLastValidPage ()
+		{
+			if (LastValidPage.HasValue)
+				return LastValidPage.Value;
+			
+			int result = 100;
+			string page = client.DownloadString (baseUrl);
+			Regex r = new Regex (@"<a href=""/page/([\d]+)\"" id=\""lastpage\"">First Comics</a>");
+			var m = r.Match (page);
+			if (m == null || m.Groups.Count != 2) {
+				Console.WriteLine ("No match. There were {0} groups but expected 2", m == null ? 0 : m.Groups.Count);
+				return 100;
+			} else {
+				if (int.TryParse (m.Groups[1].Value, out result)) {
+					Console.WriteLine ("Detected last valid page as: {0}", result);
+					LastValidPage = result;
+				}
+			}
+			return result;
+		}
+
 		public string ComicName {
 			get {
 				return "GarfieldMinusGarfield";
