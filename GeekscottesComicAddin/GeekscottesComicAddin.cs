@@ -44,10 +44,10 @@ namespace GeekscottesComicAddin
 		Regex imgRegExp = new Regex ("./strips/(.+)\\.png", RegexOptions.Compiled);
 		
 		//regexp for first ID
-		Regex firstIDRegExp = new Regex ("id=\"navfirst\" href=\"index.php\\?strip=(\\d+)\"", RegexOptions.Compiled);
+		Regex firstIDRegExp = new Regex ("id=\"t_navfirst\" href=\"http://www.nojhan.net/geekscottes/index.php\\?strip=(\\d+)\"", RegexOptions.Compiled);
 		
 		//regexp for last ID
-		Regex lastIDRegExp = new Regex ("id=\"navlast\" href=\"index.php\\?strip=(\\d+)\"", RegexOptions.Compiled);
+		Regex lastIDRegExp = new Regex ("id=\"t_navlast\" href=\"http://www.nojhan.net/geekscottes/index.php\\?strip=(\\d+)\"", RegexOptions.Compiled);
 		
 		//retrieve a page from a specific ID
 		const string pageUrlFromId = "http://www.nojhan.net/geekscottes/index.php?strip={0}";
